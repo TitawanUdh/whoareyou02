@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Image } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 // import AdsBook01 from "../assets/images/ads-book-1.jpg";
 
@@ -74,7 +74,6 @@ export default function LoadingResult() {
           rel="noopener noreferrer"
           className="ads-link"
         >
-        {/* <Image src={AdsBook01} alt="ads" className="ads-image" /> */}
         
           <div className="d-flex justify-content-center my-3">
             <Button className="ads-button">ดูเพิ่มเติม</Button>
