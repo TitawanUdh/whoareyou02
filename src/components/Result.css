@@ -144,60 +144,34 @@
 
 /* ===== Theme ตามผลลัพธ์ ===== */
 
-/* energy */
-.theme-energy {
-  background: linear-gradient(135deg, #d2eecf, #ebf7e9) !important;
+/* heart */
+.theme-heart {
+  background: linear-gradient(135deg, #eecfe1, #f7e9f2) !important;
 }
 
-.theme-energy .result-title {
-  color: #2dc74c;
+.theme-heart .result-title {
+  color: #c72d87;
 }
 
-/* freedom */
-.theme-freedom {
+/* growth */
+.theme-growth {
   background: linear-gradient(135deg, #fef6db, #fffcee) !important;
 }
 
-.theme-freedom .result-title {
+.theme-growth .result-title {
   color: #8a7c1e;
 }
 
-/* connection */
-.theme-connection {
-  background: linear-gradient(135deg, #ffc7f4, #ffe6f6) !important;
+/* survival */
+.theme-survival {
+  background: linear-gradient(135deg, #f1c7ff, #f9e6ff) !important;
 }
 
-.theme-connection .result-title {
-  color: #c20c58;
+.theme-survival .result-title {
+  color: #950cc2;
 }
 
-/* meaning */
-.theme-meaning {
-  background: linear-gradient(135deg, #f4e7fc, #f7f2fd) !important;
-}
 
-.theme-meaning .result-title {
-  color: #6a179d;
-}
-
-/* thinking */
-.theme-thinking {
-  background: linear-gradient(135deg, #e8e5eb, #f5f3f6) !important;
-}
-
-.theme-thinking .result-title {
-  color: #413751;
-}
-
-/* selfWorth */
-.theme-selfWorth {
-  background: linear-gradient(180deg, #ffead6, #ffffff) !important;
-  color: #5a391b;
-}
-
-.theme-selfWorth .result-title {
-  color: #a14c07;
-}
 
 #result-export {
   opacity: 1 !important; /* เปลี่ยนจาก 2 เป็น 1 */
@@ -217,6 +191,8 @@
   text-align: center;
   width: 50%;
   height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .result-actions {
@@ -229,12 +205,12 @@
   background-color: #ffffff !important;
   color: #1a1a1a !important;
   border: 1px solid #1a1a1a !important;
-  padding: 12px 25px;
+  padding: 12px 40px;
   border-radius: 100px; /* ทรงมน Pill */
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  width: 40%;
+  width: 50%;
 }
 
 .restart-btn:hover {
@@ -251,7 +227,7 @@
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  width: 40%;
+  width: 50%;
 }
 .save-btn:hover {
   opacity: 0.85;
