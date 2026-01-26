@@ -21,10 +21,9 @@ const Result = ({ answers, setAnswers }) => {
     }
   }, []);
 
-  const currentAnswers =
-    answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
-
   const profile = useMemo(() => {
+    const currentAnswers =
+      answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
     if (!currentAnswers.length) return null;
     return analyzeResult(currentAnswers);
   }, [currentAnswers]);
@@ -40,7 +39,7 @@ const Result = ({ answers, setAnswers }) => {
     localStorage.setItem("myself-result", JSON.stringify(resultToSave));
   }, [answers, profile]);
 
-const handleSaveImage = async () => {
+  const handleSaveImage = async () => {
     const element = document.getElementById("result-export-card");
     if (!element) return;
 
@@ -96,7 +95,6 @@ const handleSaveImage = async () => {
 
   if (!profile) return <p>กำลังวิเคราะห์ตัวตนของคุณ...</p>;
 
-
   return (
     <div id="result-export">
       <div
@@ -127,15 +125,17 @@ const handleSaveImage = async () => {
             </div>
           ) : (
             <div className="d-flex justify-content-center my-3">
-              
+              <Image
+                src={ImgSurvival}
+                alt="Survival Trait"
+                className="result-image"
+              />
             </div>
-          
           )}
 
-            <div className="result-story">
-
-          <p>{profile?.article}</p>
-</div>
+          <div className="result-story">
+            <p>{profile?.article}</p>
+          </div>
 
           <div className="result-section">
             <h5>🕳 ความกลัวลึก ๆ</h5>
@@ -151,7 +151,6 @@ const handleSaveImage = async () => {
             <h5>⚠️ เวลาคุณเครียด คุณจะ…</h5>
             <p>{profile?.stressPattern}</p>
           </div>
-
 
           <div className="result-actions no-export">
             <Button
