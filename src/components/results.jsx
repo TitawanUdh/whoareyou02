@@ -100,16 +100,16 @@ const handleSaveImage = async () => {
   return (
     <div id="result-export">
       <div
-        className={`result-page-1 theme-${profile.group}`}
+        className={`result-page-1 theme-${profile?.group}`}
         id="result-export-card"
       >
         <div className="result-card">
           <div className="result-header text-center">
             <p className="result-label">ตัวตนหลักของคุณคือ</p>
-            <h2>{profile.title}</h2>
+            <h2>{profile?.title}</h2>
           </div>
 
-          {profile.title.includes("หัวใจ") ? (
+          {profile?.title?.includes("หัวใจ") ? (
             <div className="d-flex justify-content-center my-3">
               <Image
                 src={ImgHeart}
@@ -117,7 +117,7 @@ const handleSaveImage = async () => {
                 className="result-image"
               />
             </div>
-          ) : profile.title.includes("เติบโต") ? (
+          ) : profile?.title?.includes("เติบโต") ? (
             <div className="d-flex justify-content-center my-3">
               <Image
                 src={ImgGrowth}
@@ -127,32 +127,29 @@ const handleSaveImage = async () => {
             </div>
           ) : (
             <div className="d-flex justify-content-center my-3">
-              <Image
-                src={ImgSurvival}
-                alt="Survival Trait"
-                className="result-image"
-              />
+              
             </div>
+          
           )}
 
             <div className="result-story">
 
-          <p>{profile.article}</p>
+          <p>{profile?.article}</p>
 </div>
 
           <div className="result-section">
             <h5>🕳 ความกลัวลึก ๆ</h5>
-            <p>{profile.coreFear}</p>
+            <p>{profile?.coreFear}</p>
           </div>
 
           <div className="result-section">
             <h5>🤍 ความต้องการที่ซ่อนอยู่</h5>
-            <p>{profile.hiddenNeed}</p>
+            <p>{profile?.hiddenNeed}</p>
           </div>
 
           <div className="result-section">
             <h5>⚠️ เวลาคุณเครียด คุณจะ…</h5>
-            <p>{profile.stressPattern}</p>
+            <p>{profile?.stressPattern}</p>
           </div>
 
 
