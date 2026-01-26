@@ -8,6 +8,7 @@ import ImgHeart from "../components/assets/images/heart.png";
 import ImgGrowth from "../components/assets/images/growth.png";
 import ImgSurvival from "../components/assets/images/survival.png";
 import "../components/Result.css";
+
 const Result = ({ answers, setAnswers }) => {
   const navigate = useNavigate();
   const [isGenerating, setIsGenerating] = useState(false);
@@ -21,12 +22,15 @@ const Result = ({ answers, setAnswers }) => {
     }
   }, []);
 
+  // แก้ไขจุดที่ 1: ย้ายการประกาศ currentAnswers เข้ามาข้างใน useMemo
+  // และใส่ dependencies ให้ครบถ้วน
   const profile = useMemo(() => {
     const currentAnswers =
       answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
+    
     if (!currentAnswers.length) return null;
     return analyzeResult(currentAnswers);
-  }, [currentAnswers]);
+  }, [answers, savedResult]); 
 
   useEffect(() => {
     if (!answers?.length || !profile) return;
@@ -45,7 +49,6 @@ const Result = ({ answers, setAnswers }) => {
 
     setIsGenerating(true);
 
-    // เก็บสีพื้นหลังธีมไว้
     const computedStyle = window.getComputedStyle(element);
     const currentBgColor = computedStyle.backgroundColor;
 
@@ -62,16 +65,15 @@ const Result = ({ answers, setAnswers }) => {
         onclone: (clonedDoc) => {
           const clonedCard = clonedDoc.querySelector(".result-card");
           if (clonedCard) {
-            clonedCard.style.background = "#ffffff"; // บังคับการ์ดขาวทึบ
+            clonedCard.style.background = "#ffffff";
             clonedCard.style.backdropFilter = "none";
             clonedCard.style.webkitBackdropFilter = "none";
-            clonedCard.style.animation = "none"; // ปิด animation ไม่ให้ภาพฟุ้ง
+            clonedCard.style.animation = "none";
           }
         },
       });
 
       const dataUrl = canvas.toDataURL("image/png");
-
       const link = document.createElement("a");
       link.href = dataUrl;
       link.download = `result-${profile.group}.png`;
@@ -107,31 +109,15 @@ const Result = ({ answers, setAnswers }) => {
             <h2>{profile?.title}</h2>
           </div>
 
-          {profile?.title?.includes("หัวใจ") ? (
-            <div className="d-flex justify-content-center my-3">
-              <Image
-                src={ImgHeart}
-                alt="Heart Trait"
-                className="result-image"
-              />
-            </div>
-          ) : profile?.title?.includes("เติบโต") ? (
-            <div className="d-flex justify-content-center my-3">
-              <Image
-                src={ImgGrowth}
-                alt="Growth Trait"
-                className="result-image"
-              />
-            </div>
-          ) : (
-            <div className="d-flex justify-content-center my-3">
-              <Image
-                src={ImgSurvival}
-                alt="Survival Trait"
-                className="result-image"
-              />
-            </div>
-          )}
+          <div className="d-flex justify-content-center my-3">
+            {profile?.title?.includes("หัวใจ") ? (
+              <Image src={ImgHeart} alt="Heart Trait" className="result-image" />
+            ) : profile?.title?.includes("เติบโต") ? (
+              <Image src={ImgGrowth} alt="Growth Trait" className="result-image" />
+            ) : (
+              <Image src={ImgSurvival} alt="Survival Trait" className="result-image" />
+            )}
+          </div>
 
           <div className="result-story">
             <p>{profile?.article}</p>
