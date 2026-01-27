@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-// import AdsBook01 from "../assets/images/ads-book-1.jpg";
+import AdsBook01 from "./assets/images/ads-book-1.jpg";
 
 export default function LoadingResult() {
   const navigate = useNavigate();
@@ -62,19 +62,23 @@ export default function LoadingResult() {
             )}
           </span>{" "}
         </div>
-        <h2 className="mt-3">เคยถามตัวเองไหม ?</h2>
+        <h2 className="mt-3">ล้างสมอง ?</h2>
+        <div className="d-flex justify-content-center my-3">
+          <Image src={AdsBook01} alt="หนังสือล้างสมอง" className="ads-image" />
+        </div>
         <p className="ads-text">
           {" "}
-          เรามีชีวิตอยู่เพื่ออะไร คำถามนี้อาจไม่มีคำตอบตายตัว แต่แน่นอนว่า
-          "ถึงเราจะเลือกเกิดไม่ได้ แต่เราเลือกที่จะมีชีวิตที่ดีได้"
+          หนังสือเล่มนี้จะพาคุณมองเห็น “ด้านที่มองไม่เห็น” ของจิตวิทยามนุษย์
+          ตั้งแต่กลไกการชักจูง การควบคุมความคิด
+          ไปจนถึงวิธีที่คนธรรมดาอาจถูกชี้นำโดยไม่รู้ตัว เมื่อเข้าใจมัน
+          คุณจะเริ่มมองโลกและผู้คนได้ชัดขึ้นกว่าเดิม
         </p>
-<a
-          href="https://s.shopee.co.th/AUnx5oAs34"
+        <a
+          href="https://s.shopee.co.th/8V30fx3mwy"
           target="_blank"
           rel="noopener noreferrer"
           className="ads-link"
         >
-        
           <div className="d-flex justify-content-center my-3">
             <Button className="ads-button">ดูเพิ่มเติม</Button>
           </div>{" "}
