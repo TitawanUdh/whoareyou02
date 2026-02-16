@@ -22,8 +22,6 @@ const Result = ({ answers, setAnswers }) => {
     }
   }, []);
 
-  // แก้ไขจุดที่ 1: ย้ายการประกาศ currentAnswers เข้ามาข้างใน useMemo
-  // และใส่ dependencies ให้ครบถ้วน
   const profile = useMemo(() => {
     const currentAnswers =
       answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
@@ -89,13 +87,6 @@ const Result = ({ answers, setAnswers }) => {
     }
   };
 
-  const analysis = useMemo(() => {
-    const currentAnswers =
-      answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
-    return analyzeResult(currentAnswers);
-  }, [answers, savedResult]);
-
-  const group = analysis.primary;
 
   useEffect(() => {
     const finalAnswers =
