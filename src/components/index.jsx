@@ -12,12 +12,12 @@ function Index() {
   <div className="fog fog2" />
 
   <div className="container d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <h1 className="title">รู้จักตัวเองไหม ?</h1>
+    <h1 className="title">ค้นหาตัวตนที่แท้จริง ?</h1>
 
     <p className="subtitle ">
       เคยสงสัยไหมว่า
       <br />
-      อะไรคือแรงขับเคลื่อนของชีวิตคุณ ?
+      ด้านมืดในตัวคุณคืออะไร ?
     </p>
 
     <Link to="/question/1" className="start-button">
