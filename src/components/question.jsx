@@ -1,5 +1,14 @@
 const questions = [
   {
+    id: 0,
+    question: "เพศของคุณ ?",
+    options: [
+      { key: "A", text: "ชาย", trait: "man" },
+      { key: "B", text: "หญิง", trait: "girl" },
+      { key: "C", text: "LGBQ+", trait: "LGBQ" },
+    ],
+  },
+  {
     id: 1,
     question: "ตอนที่ไม่มีใครเห็นคุณเลย คุณเป็นแบบไหน?",
     options: [

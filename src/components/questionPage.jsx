@@ -19,7 +19,7 @@ function QuestionPage({ answers, setAnswers }) {
       navigate(`/question/${questionIndex + 2}`);
     } else {
       localStorage.setItem("quizScore", JSON.stringify(newAnswers));
-      navigate("/loading"); 
+      navigate("/loading");
     }
   };
 

@@ -27,10 +27,10 @@ const Result = ({ answers, setAnswers }) => {
   const profile = useMemo(() => {
     const currentAnswers =
       answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
-    
+
     if (!currentAnswers.length) return null;
     return analyzeResult(currentAnswers);
-  }, [answers, savedResult]); 
+  }, [answers, savedResult]);
 
   useEffect(() => {
     if (!answers?.length || !profile) return;
@@ -89,8 +89,65 @@ const Result = ({ answers, setAnswers }) => {
     }
   };
 
+  const analysis = useMemo(() => {
+    const currentAnswers =
+      answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
+    return analyzeResult(currentAnswers);
+  }, [answers, savedResult]);
+
+  const group = analysis.primary;
+
+  useEffect(() => {
+    const finalAnswers =
+      answers?.length > 0 ? answers : savedResult?.rawAnswers || [];
+
+    if (!finalAnswers.length) return;
+
+    if (!profile?.title) return;
+
+    saveToSheet(finalAnswers, profile.title);
+
+    const alreadySent = localStorage.getItem("sheet-sent");
+    if (alreadySent) return;
+
+
+    localStorage.setItem("sheet-sent", "true");
+  }, [answers, savedResult, profile]);
+
+  const saveToSheet = async (answers, result) => {
+    try {
+      const userId =
+        localStorage.getItem("psychoUserId") ||
+        Math.random().toString(36).substring(2);
+      localStorage.setItem("psychoUserId", userId);
+
+      const payload = {
+        userId: userId,
+        answers: answers,
+        result: result,
+      };
+
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbxfKdklyMRAIzFdFOVCeFbeFgOr2prQdrrZLBhOXcLhd3Y8XiSGBv4evxICULmexbDZVA/exec",
+        {
+          method: "POST",
+          mode: "cors", 
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+    } catch (err) {
+      console.error("ส่ง sheet ไม่สำเร็จ", err);
+    }
+  };
+
   const handleRestart = () => {
     localStorage.removeItem("myself-result");
+    localStorage.removeItem("sheet-sent");
+
     setAnswers([]);
     navigate("/");
   };
@@ -111,11 +168,23 @@ const Result = ({ answers, setAnswers }) => {
 
           <div className="d-flex justify-content-center my-3">
             {profile?.title?.includes("หัวใจ") ? (
-              <Image src={ImgHeart} alt="Heart Trait" className="result-image" />
+              <Image
+                src={ImgHeart}
+                alt="Heart Trait"
+                className="result-image"
+              />
             ) : profile?.title?.includes("เติบโต") ? (
-              <Image src={ImgGrowth} alt="Growth Trait" className="result-image" />
+              <Image
+                src={ImgGrowth}
+                alt="Growth Trait"
+                className="result-image"
+              />
             ) : (
-              <Image src={ImgSurvival} alt="Survival Trait" className="result-image" />
+              <Image
+                src={ImgSurvival}
+                alt="Survival Trait"
+                className="result-image"
+              />
             )}
           </div>
 

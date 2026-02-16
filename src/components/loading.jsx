@@ -74,7 +74,7 @@ export default function LoadingResult() {
           คุณจะเริ่มมองโลกและผู้คนได้ชัดขึ้นกว่าเดิม
         </p>
         <a
-          href="https://s.shopee.co.th/8V30fx3mwy"
+          href="https://s.shopee.co.th/7pnpbnIXUS"
           target="_blank"
           rel="noopener noreferrer"
           className="ads-link"
